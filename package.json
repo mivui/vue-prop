@@ -1,17 +1,12 @@
 {
   "name": "ts-prop",
-  "version": "1.0.1",
-  "private": true,
+  "version": "1.0.4",
   "description": "vue3 ts prop utils",
   "main": "dist/index.cjs.prod.js",
   "module": "dist/index.esm-browser.prod.js",
   "types": "dist/index.d.ts",
-  "author": "LvXiaoBu",
-  "license": "MIT",
-  "keywords": [
-    "vue3",
-    "vue",
-    "typescript"
+  "files": [
+    "dist"
   ],
   "scripts": {
     "lint": "eslint --fix packages/**/*.ts dist/**/*.d.ts",
@@ -20,7 +15,7 @@
     "build": "yarn rollup && yarn api && yarn lint "
   },
   "dependencies": {
-    "vue": "^3.2.6"
+    "vue": "^3.2.0"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "^7.18.7",
@@ -41,5 +36,20 @@
     "rollup-plugin-typescript2": "^0.30.0",
     "tslib": "^2.3.1",
     "typescript": "~4.3.5"
-  }
+  },
+  "author": "LvXiaoBu",
+  "license": "MIT",
+  "keywords": [
+    "vue3",
+    "vue",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ttps://github.com/uinio/ts-prop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uinio/ts-prop/issues"
+  },
+  "homepage": "https://github.com/uinio/ts-prop#readme"
 }
