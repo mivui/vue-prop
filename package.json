@@ -1,0 +1,45 @@
+{
+  "name": "ts-prop",
+  "version": "1.0.1",
+  "private": true,
+  "description": "vue3 ts prop utils",
+  "main": "dist/index.cjs.prod.js",
+  "module": "dist/index.esm-browser.prod.js",
+  "types": "dist/index.d.ts",
+  "author": "LvXiaoBu",
+  "license": "MIT",
+  "keywords": [
+    "vue3",
+    "vue",
+    "typescript"
+  ],
+  "scripts": {
+    "lint": "eslint --fix packages/**/*.ts dist/**/*.d.ts",
+    "rollup": "rollup -c rollup.config.js",
+    "api": "api-extractor run",
+    "build": "yarn rollup && yarn api && yarn lint "
+  },
+  "dependencies": {
+    "vue": "^3.2.6"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.18.7",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.29.3",
+    "@typescript-eslint/parser": "^4.29.3",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^3.4.1",
+    "prettier": "^2.3.2",
+    "rollup": "^2.56.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "tslib": "^2.3.1",
+    "typescript": "~4.3.5"
+  }
+}
