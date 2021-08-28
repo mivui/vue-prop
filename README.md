@@ -7,6 +7,7 @@
 * install
 ```shell
 yarn add ts-prop
+
 npm install ts-prop
 ```
 * example
