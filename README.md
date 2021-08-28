@@ -4,7 +4,12 @@
 vue3 ts prop utils smaller, faster and easier to expand
 <br/>
 
-> example
+* install
+```shell
+yarn add ts-prop
+npm install ts-prop
+```
+* example
 
 ```vue
 
@@ -54,7 +59,7 @@ const props = {
 };
 ```
 
-> api
+* api
 
 | property | default type | 
 |:---------:|:---------:|
@@ -70,7 +75,7 @@ const props = {
 | array | Record<string, unknown>[] |
 | func | ()=>void |
 
-> custom type
+* custom type
 
 | property | default type | required type |
 |:---------:|:---------:|:---------:|
