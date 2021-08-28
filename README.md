@@ -1,7 +1,7 @@
 # ts-prop
 
-<hr/>
-vue3 ts prop utils smaller, faster and easier to expand
+>Prop type definition of Vue3. only recommended for typescript.
+
 <br/>
 
 * install
