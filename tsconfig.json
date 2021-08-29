@@ -17,7 +17,7 @@
     "removeComments": false,
     "jsx": "preserve",
     "lib": ["esnext", "dom"],
-    "types": ["node"],
+    "types": ["jest","node"],
     "rootDir": ".",
     "paths": {
       "@ts-prop/*": ["packages/*/src"],

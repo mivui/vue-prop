@@ -9,6 +9,8 @@ export type DefaultType<T> =
 
 export type VuePropType<T> = PropType<T> | true | null;
 
+export type Validator<T> = (value: T) => boolean;
+
 export class VueProp<T = any, D = T> {
   type?: VuePropType<T>;
 
@@ -16,7 +18,7 @@ export class VueProp<T = any, D = T> {
 
   default?: DefaultType<D>;
 
-  validator?(value: unknown): boolean;
+  validator?: Validator<D>;
 
   constructor(type: VuePropType<T>) {
     this.type = type;

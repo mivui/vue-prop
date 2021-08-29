@@ -6,9 +6,9 @@
 
 * install
 ```shell
-yarn add ts-prop
-
 npm install ts-prop
+
+yarn add ts-prop
 ```
 * example
 
@@ -20,7 +20,7 @@ npm install ts-prop
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { prop, defineEmit } from 'ts-prop';
+import prop from 'ts-prop';
 
 export const buttonProps = {
   icon: prop.stringNumber.default('user').type,
@@ -28,7 +28,7 @@ export const buttonProps = {
 };
 
 export const buttonEmits = {
-  open: defineEmit<(value: number | string) => void>(),
+  open: prop.emit<(value: number | string) => void>(),
 };
 
 export default defineComponent({
@@ -44,14 +44,14 @@ export default defineComponent({
 ```
 
 ```ts
-import { prop, defineArray } from 'ts-prop';
+import { prop } from 'ts-prop';
 
 const props = {
   name: prop.stringNumber.default('123').required,
   //{type:[String,Number],required:true,default:123}
   test: prop.string.type,
   //{type:String}
-  titles: defineArray<{ name: string }>().validate((value) => value.length > 0).type,
+  titles: prop.array<{ name: string }>().validator((value) => value.length > 0).type,
   //{type:Array as PropType<Array<unknown>>,validator:{(value) => value.length > 0}}
   content: prop.vNode.type,
   //{type:[Object,String] as PropType<VNode|null|string>}
@@ -73,14 +73,7 @@ const props = {
 | vNode | vue.VNode &Iota; string &Iota; null |
 | css | vue.StyleValue |
 | object | Record<string, unknown> |
-| array | Record<string, unknown>[] |
+| array | Record<string, unknown>[] example: prop.array<{name?:string}>.type|
 | func | ()=>void |
+| emit | ()=>void |
 
-* custom type
-
-| property | default type | required type |
-|:---------:|:---------:|:---------:|
-| defineObject | null |true |
-| defineArray | null |true |
-| defineFun | null |true |
-| defineEmit | ()=>void | false |

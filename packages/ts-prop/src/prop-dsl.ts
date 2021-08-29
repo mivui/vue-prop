@@ -1,5 +1,5 @@
 import { Prop } from 'vue';
-import { VueProp, VuePropType } from './prop';
+import { Validator, VueProp, VuePropType } from './prop';
 
 export type PropDslType<T, D = T> = Omit<PropDsl<T, D>, 'prop'>;
 
@@ -15,7 +15,7 @@ export class PropDsl<T = any, D = T> {
     return this as PropDslType<T, D>;
   }
 
-  validate(validator: (value: D) => boolean) {
+  validator(validator: Validator<D>) {
     this.prop.validator = validator;
     return this as PropDslType<T, D>;
   }
