@@ -44,7 +44,7 @@ export default defineComponent({
 ```
 
 ```ts
-import { prop } from 'ts-prop';
+import prop from 'ts-prop';
 
 const props = {
   name: prop.stringNumber.default('123').required,
