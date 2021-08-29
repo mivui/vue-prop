@@ -1,7 +1,7 @@
 import { PropType, StyleValue, VNode } from 'vue';
 import { useProp } from './prop-dsl';
 
-export type { DefaultType, VuePropType } from './prop';
+export type { DefaultType, VuePropType, Validator } from './prop';
 export { VueProp } from './prop';
 export type { PropDslType, useProp } from './prop-dsl';
 export { PropDsl } from './prop-dsl';
