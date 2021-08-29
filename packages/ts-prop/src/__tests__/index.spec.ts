@@ -24,12 +24,9 @@ test('stringNumber', () => {
 
 test('number', () => {
   expect(prop.number.type).toEqual({ type: Number });
-  expect(prop.number.required).toEqual({
+  expect(prop.number.default(7).required).toEqual({
     type: Number,
     required: true,
+    default: 7,
   });
-  // expect(prop.number.validator(() => false).type).toEqual({
-  //   type: Number,
-  //   validator: () => false,
-  // });
 });
