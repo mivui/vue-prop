@@ -29,4 +29,11 @@ test('number', () => {
     required: true,
     default: 7,
   });
+
+  const validator = (value: number) => value > 0;
+
+  expect(prop.number.validator(validator).type).toEqual({
+    type: Number,
+    validator,
+  });
 });

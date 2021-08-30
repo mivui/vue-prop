@@ -58,7 +58,7 @@ const props = {
   test: prop.string.type,
   //{type:String}
   titles: prop.array<Person>().validator((value) => value.length > 0).type,
-  //{type:Array as PropType<Array<Person>>,validator:{(value) => value.length > 0}}
+  //{type:Array as PropType<Array<Person>>,validator:(value) => value.length > 0}
   content: prop.vNode.type,
   //{type:[Object,String] as PropType<VNode|null|string>}
   style: prop.css.default({ height: '20px' }).type,
