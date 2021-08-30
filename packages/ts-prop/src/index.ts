@@ -39,15 +39,21 @@ export class DefineProp {
     return useProp<StyleValue>(Object);
   }
 
-  static object = <T = Record<string, unknown>>() => useProp<T>(Object);
+  static object<T = Record<string, unknown>>() {
+    return useProp<T>(Object);
+  }
 
-  static array = <T = Record<string, unknown>>() => useProp<Array<T>>(Array);
+  static array<T = Record<string, unknown>>() {
+    return useProp<Array<T>>(Array);
+  }
 
-  static func = <T = () => void>() => {
+  static func<T = () => void>() {
     return { type: Function as PropType<T> };
-  };
+  }
 
-  static emit = <T = () => void>() => Function as unknown as T;
+  static emit<T = () => void>() {
+    return Function as unknown as T;
+  }
 }
 
 export default DefineProp;
