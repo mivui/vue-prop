@@ -46,13 +46,19 @@ export default defineComponent({
 ```ts
 import prop from 'ts-prop';
 
+interface Person {
+  name: string;
+  sex?: string;
+  age: number;
+}
+
 const props = {
   name: prop.stringNumber.default('123').required,
   //{type:[String,Number],required:true,default:123}
   test: prop.string.type,
   //{type:String}
-  titles: prop.array<{ name: string }>().validator((value) => value.length > 0).type,
-  //{type:Array as PropType<Array<unknown>>,validator:{(value) => value.length > 0}}
+  titles: prop.array<Person>().validator((value) => value.length > 0).type,
+  //{type:Array as PropType<Array<Person>>,validator:{(value) => value.length > 0}}
   content: prop.vNode.type,
   //{type:[Object,String] as PropType<VNode|null|string>}
   style: prop.css.default({ height: '20px' }).type,

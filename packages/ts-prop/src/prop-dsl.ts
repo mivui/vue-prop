@@ -21,7 +21,7 @@ export class PropDsl<T = any, D = T> {
   }
 
   get type() {
-    return this.prop as Prop<T, T> & { required: false };
+    return this.prop as Prop<T, T>;
   }
 
   get required() {
