@@ -12,9 +12,9 @@ export default {
   output: [
     { file: 'dist/index.cjs.js', format: 'cjs' },
     { file: 'dist/index.cjs.prod.js', format: 'cjs', plugins: [terser()] },
-    { file: 'dist/index.esm-browser.js', format: 'esm' },
+    { file: 'dist/index.esm.js', format: 'esm' },
     {
-      file: 'dist/index.esm-browser.prod.js',
+      file: 'dist/index.esm.prod.js',
       format: 'esm',
       plugins: [terser()],
     },

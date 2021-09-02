@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
@@ -16,15 +15,25 @@
     "esModuleInterop": true,
     "removeComments": false,
     "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "types": ["jest","node"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "node"
+    ],
     "rootDir": ".",
     "paths": {
-      "@ts-prop/*": ["packages/*/src"],
-      "ts-prop": ["packages/ts-prop/src"]
+      "@ts-prop/*": [
+        "packages/*/src"
+      ],
+      "ts-prop": [
+        "packages/ts-prop/src"
+      ]
     },
     "declaration": true,
-    "declarationMap": false,
+    "declarationMap": false
   },
   "include": [
     "packages/*/src/**/*.ts"

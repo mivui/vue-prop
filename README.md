@@ -2,14 +2,14 @@
 
 >Prop type definition of Vue3. only recommended for typescript.
 
-<br/>
-
 * install
+
 ```shell
 npm install ts-prop
 
 yarn add ts-prop
 ```
+
 * example
 
 ```vue
@@ -68,7 +68,7 @@ const props = {
 
 * api
 
-| property | default type | 
+| property | default type |
 |:---------:|:---------:|
 | string | string|
 | number |number|
@@ -82,4 +82,3 @@ const props = {
 | array | Record<string, unknown>[] example: prop.array<{name?:string}>.type|
 | func | ()=>void |
 | emit | ()=>void |
-
