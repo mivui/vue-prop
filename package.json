@@ -3,7 +3,7 @@
   "version": "1.0.10",
   "description": "Prop type definition of Vue3. only recommended for typescript.",
   "main": "dist/index.cjs.prod.js",
-  "module": "dist/index.esm-browser.prod.js",
+  "module": "dist/index.esm.prod.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
