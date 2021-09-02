@@ -1,10 +1,10 @@
 {
   "name": "ts-prop",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "Prop type definition of Vue3. only recommended for typescript.",
   "main": "dist/index.cjs.prod.js",
   "module": "dist/index.esm.prod.js",
-  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
