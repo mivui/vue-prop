@@ -22,19 +22,19 @@ yarn add ts-prop
 import { defineComponent } from 'vue';
 import prop from 'ts-prop';
 
-export const props = {
+export const drawerProps = {
   visible: prop.boolean.default(false).required,
   title: prop.string.type
 };
 
-export const emits = {
+export const drawerEmits = {
   open: prop.emit<(value: boolean) => void>(),
 };
 
 export default defineComponent({
   name: 'Drawer',
-  props: props,
-  emits: emits,
+  props: drawerProps,
+  emits: drawerEmits,
   setup(props, { emit }) {
     return {}
   },
