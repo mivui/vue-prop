@@ -23,6 +23,14 @@ export class DefineProp {
     return useProp<boolean>(Boolean);
   }
 
+  static get stringBool() {
+    return useProp<string | boolean>([String, Boolean]);
+  }
+
+  static get numberBool() {
+    return useProp<string | boolean>([String, Boolean]);
+  }
+
   static get symbol() {
     return useProp<symbol>(Symbol);
   }

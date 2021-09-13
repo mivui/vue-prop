@@ -1,8 +1,8 @@
 # ts-prop
 
->Prop type definition of Vue3. only recommended for typescript.
+> Prop type definition of Vue3. only recommended for typescript.
 
-* install
+#### install
 
 ```shell
 npm install ts-prop
@@ -10,7 +10,7 @@ npm install ts-prop
 yarn add ts-prop
 ```
 
-* example
+#### example
 
 ```vue
 
@@ -22,19 +22,19 @@ yarn add ts-prop
 import { defineComponent } from 'vue';
 import prop from 'ts-prop';
 
-export const buttonProps = {
-  icon: prop.stringNumber.default('user').type,
-  name: prop.string.required,
+export const props = {
+  visible: prop.boolean.default(false).required,
+  title: prop.string.type
 };
 
-export const buttonEmits = {
-  open: prop.emit<(value: number | string) => void>(),
+export const emits = {
+  open: prop.emit<(value: boolean) => void>(),
 };
 
 export default defineComponent({
-  name: 'VButton',
-  props: buttonProps,
-  emits: buttonEmits,
+  name: 'Drawer',
+  props: props,
+  emits: emits,
   setup(props, { emit }) {
     return {}
   },
@@ -66,19 +66,49 @@ const props = {
 };
 ```
 
-* api
+#### api
 
-| property | default type |
-|:---------:|:---------:|
-| string | string|
-| number |number|
-| stringNumber | string  &Iota; number|
-| boolean | boolean |
-| symbol | symbol |
-| date | date |
-| vNode | vue.VNode &Iota; string &Iota; null |
-| css | vue.StyleValue |
-| object | Record<string, unknown> |
-| array | Record<string, unknown>[] example: prop.array<{name?:string}>.type|
-| func | ()=>void |
-| emit | ()=>void |
+| property | default type |example|
+|:---------:|:---------:|:---------:|
+| string | string| prop.string.type |
+| number |number|prop.number.default(7).type |
+| stringNumber | string &Iota; number| prop.stringNumber.type |
+| boolean | boolean |prop.boolean.type |
+| stringBool | boolean &Iota; string | prop.stringBool.type |
+| numberBool | boolean &Iota; number | prop.numberBool.type |
+| symbol | symbol |prop.symbol.type |
+| date | date |prop.date.type |
+| vNode | vue.VNode &Iota; string &Iota; null |prop.vNode.type |
+| css | vue.StyleValue |prop.css.type |
+| object | Record<string, unknown> |prop.object<{name?:string,age?:number}>().type |
+| array | Record<string, unknown>[] |prop.array<{name:string}>().type |
+| func | ()=>void | prop.func<(value?:number)=>boolean>()  _recommended to use emit_  |
+| emit | ()=>void | prop.func<(value:string)=>void>() |
+
+#### Custom Type
+##### _prop.ts_
+
+```ts
+import { useProp } from 'ts-prop';
+
+export default class DefineProp {
+  static stringObject<T = Record<string, unknown>>() {
+    return useProp<string | T>([String, Object]);
+  }
+
+  static get stringBoolean() {
+    return useProp<string | boolean>([String, Boolean]);
+  }
+}
+
+
+```
+
+```ts
+import prop from './prop';
+
+const props = {
+  name: prop.stringObject<{ name?: string; lowerCase?: boolean }>().type,
+  type: prop.stringBoolean.required,
+};
+```
