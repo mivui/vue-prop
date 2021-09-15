@@ -1,6 +1,6 @@
 {
   "name": "ts-prop",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Prop type definition of Vue3. only recommended for typescript.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -16,12 +16,10 @@
     "build": "npm run rollup && npm run api && npm run lint "
   },
   "dependencies": {
-    "@babel/runtime": "^7.15.4",
     "vue": "^3.2.11"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
-    "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6",
     "@microsoft/api-extractor": "^7.18.7",
     "@rollup/plugin-babel": "^5.3.0",

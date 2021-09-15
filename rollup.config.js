@@ -13,30 +13,17 @@ export default {
     {
       file: 'dist/index.cjs.js',
       format: 'cjs',
-      plugins: [
-        getBabelOutputPlugin({
-          presets: ['@babel/preset-env'],
-          plugins: [
-            ['@babel/plugin-transform-runtime', { useESModules: false }],
-          ],
-        }),
-      ],
     },
     {
       file: 'dist/index.esm.js',
       format: 'esm',
-      plugins: [
-        getBabelOutputPlugin({
-          presets: ['@babel/preset-env'],
-          plugins: [
-            ['@babel/plugin-transform-runtime', { useESModules: true }],
-          ],
-        }),
-      ],
     },
   ],
   plugins: [
     commonjs(),
+    getBabelOutputPlugin({
+      presets: ['@babel/preset-env'],
+    }),
     resolve({
       extensions,
       modulesOnly: true,
