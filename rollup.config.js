@@ -1,31 +1,47 @@
+import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import replace from '@rollup/plugin-replace';
-import { terser } from 'rollup-plugin-terser';
 
 const extensions = ['.js', '.ts'];
 
 export default {
   input: ['./packages/ts-prop/src/index.ts'],
   output: [
-    { file: 'dist/index.cjs.js', format: 'cjs' },
-    { file: 'dist/index.cjs.prod.js', format: 'cjs', plugins: [terser()] },
-    { file: 'dist/index.esm.js', format: 'esm' },
     {
-      file: 'dist/index.esm.prod.js',
+      file: 'dist/index.cjs.js',
+      format: 'cjs',
+      plugins: [
+        getBabelOutputPlugin({
+          presets: ['@babel/preset-env'],
+          plugins: [
+            ['@babel/plugin-transform-runtime', { useESModules: false }],
+          ],
+        }),
+      ],
+    },
+    {
+      file: 'dist/index.esm.js',
       format: 'esm',
-      plugins: [terser()],
+      plugins: [
+        getBabelOutputPlugin({
+          presets: ['@babel/preset-env'],
+          plugins: [
+            ['@babel/plugin-transform-runtime', { useESModules: true }],
+          ],
+        }),
+      ],
     },
   ],
   plugins: [
+    commonjs(),
     resolve({
       extensions,
       modulesOnly: true,
       preferredBuiltins: false,
     }),
-    commonjs(),
     json({
       namedExports: false,
     }),
