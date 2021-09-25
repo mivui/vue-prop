@@ -13,6 +13,11 @@ export default {
     {
       file: 'dist/index.cjs.js',
       format: 'cjs',
+      plugin: [
+        getBabelOutputPlugin({
+          presets: ['@babel/preset-env'],
+        }),
+      ],
     },
     {
       file: 'dist/index.esm.js',
@@ -21,9 +26,6 @@ export default {
   ],
   plugins: [
     commonjs(),
-    getBabelOutputPlugin({
-      presets: ['@babel/preset-env'],
-    }),
     resolve({
       extensions,
       modulesOnly: true,
@@ -40,7 +42,6 @@ export default {
       },
     }),
     replace({
-      preventAssignment: true,
       'process.env.NODE_ENV': JSON.stringify('production'),
       __buildDate__: () => JSON.stringify(new Date()),
       __buildVersion: 15,
