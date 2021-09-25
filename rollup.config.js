@@ -4,6 +4,7 @@ import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import replace from '@rollup/plugin-replace';
+import path from 'path';
 
 const extensions = ['.js', '.ts'];
 
@@ -13,11 +14,6 @@ export default {
     {
       file: 'dist/index.cjs.js',
       format: 'cjs',
-      plugin: [
-        getBabelOutputPlugin({
-          presets: ['@babel/preset-env'],
-        }),
-      ],
     },
     {
       file: 'dist/index.esm.js',
@@ -26,6 +22,9 @@ export default {
   ],
   plugins: [
     commonjs(),
+    getBabelOutputPlugin({
+      configFile: path.resolve(__dirname, 'babel.config.js'),
+    }),
     resolve({
       extensions,
       modulesOnly: true,
