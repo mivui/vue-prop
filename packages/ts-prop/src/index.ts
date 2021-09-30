@@ -1,10 +1,8 @@
 import { PropType, StyleValue, VNode } from 'vue';
 import { useProp } from './prop-dsl';
 
-export type { DefaultType, VuePropType, Validator } from './prop';
-export { VueProp } from './prop';
-export type { PropDslType, useProp } from './prop-dsl';
-export { PropDsl } from './prop-dsl';
+export { VueProp, DefaultType, VuePropType, Validator } from './prop';
+export { useProp, PropDsl } from './prop-dsl';
 
 export class DefineProp {
   static get string() {

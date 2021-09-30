@@ -1,35 +1,33 @@
 import { Prop } from 'vue';
 import { Validator, VueProp, VuePropType } from './prop';
 
-export type PropDslType<T, D = T> = Omit<PropDsl<T, D>, 'prop'>;
-
-export class PropDsl<T = any, D = T> {
-  prop: VueProp<T, D>;
+export class PropDsl<T = any> {
+  private readonly prop: VueProp<T, T>;
 
   constructor(type: VuePropType<T>) {
-    this.prop = new VueProp<T, D>(type);
+    this.prop = new VueProp<T, T>(type);
   }
 
-  default(value?: D) {
+  default(value?: T): PropDsl<T> {
     this.prop.default = value;
-    return this as PropDslType<T, D>;
+    return this;
   }
 
-  validator(validator: Validator<D>) {
+  validator(validator: Validator<T>): PropDsl<T> {
     this.prop.validator = validator;
-    return this as PropDslType<T, D>;
+    return this;
   }
 
-  get type() {
+  get type(): Prop<T, T> {
     return this.prop as Prop<T, T>;
   }
 
-  get required() {
+  get required(): Prop<T, T> & { required: true } {
     this.prop.required = true;
     return this.prop as Prop<T, T> & { required: true };
   }
 }
 
-export function useProp<T>(type: VuePropType<T>) {
-  return new PropDsl<T>(type) as PropDslType<T>;
+export function useProp<T>(type: VuePropType<T>): PropDsl<T> {
+  return new PropDsl<T>(type);
 }
