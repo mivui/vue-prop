@@ -9,30 +9,28 @@ test('emit', () => {
 });
 
 test('array', () => {
-  expect(prop.array<{ icon: string }>().required).toEqual({
+  expect(prop.array<{ icon: string }>().isRequired).toEqual({
     type: Array,
     required: true,
   });
 });
 
 test('stringNumber', () => {
-  expect(prop.stringNumber.required).toEqual({
+  expect(prop.stringNumber.isRequired).toEqual({
     type: [String, Number],
     required: true,
   });
 });
 
 test('number', () => {
-  expect(prop.number.type).toEqual({ type: Number });
-  expect(prop.number.default(7).required).toEqual({
+  expect(prop.number).toEqual({ type: Number });
+  expect(prop.number.def(7).isRequired).toEqual({
     type: Number,
     required: true,
     default: 7,
   });
-
   const validator = (value: number) => value > 0;
-
-  expect(prop.number.validator(validator).type).toEqual({
+  expect(prop.number.valid(validator)).toEqual({
     type: Number,
     validator,
   });

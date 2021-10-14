@@ -23,8 +23,8 @@ import { defineComponent } from 'vue';
 import prop from 'ts-prop';
 
 export const drawerProps = {
-  visible: prop.boolean.default(false).required,
-  title: prop.string.type
+  visible: prop.boolean.def(false).isRequired,
+  title: prop.string
 };
 
 export const drawerEmits = {
@@ -53,15 +53,15 @@ interface Person {
 }
 
 const props = {
-  name: prop.stringNumber.default('123').required,
+  name: prop.stringNumber.def('123').isRequired,
   //{type:[String,Number],required:true,default:123}
-  test: prop.string.type,
+  test: prop.string,
   //{type:String}
-  titles: prop.array<Person>().validator((value) => value.length > 0).type,
+  titles: prop.array<Person>().valid((value) => value.length > 0),
   //{type:Array as PropType<Array<Person>>,validator:(value) => value.length > 0}
-  content: prop.vNode.type,
+  content: prop.vNode,
   //{type:[Object,String] as PropType<VNode|null|string>}
-  style: prop.css.default({ height: '20px' }).type,
+  style: prop.css.def({ height: '20px' }),
   //{type: Object as PropType<StyleValue>,default:{ height:'20px' }}
 };
 ```
@@ -70,20 +70,20 @@ const props = {
 
 | property | default type |example|
 |:---------:|:---------:|:---------:|
-| string | string| prop.string.type |
-| number |number|prop.number.default(7).type |
-| stringNumber | string &Iota; number| prop.stringNumber.type |
-| boolean | boolean |prop.boolean.type |
-| stringBool | boolean &Iota; string | prop.stringBool.type |
-| numberBool | boolean &Iota; number | prop.numberBool.type |
-| symbol | symbol |prop.symbol.type |
-| date | date |prop.date.type |
-| vNode | vue.VNode &Iota; string &Iota; null |prop.vNode.type |
-| css | vue.StyleValue |prop.css.type |
-| object | Record<string, unknown> |prop.object<{name?:string,age?:number}>().type |
-| array | Record<string, unknown>[] |prop.array<{name:string}>().type |
+| string | string| prop.string |
+| number |number|prop.number.def(7) |
+| stringNumber | string &Iota; number| prop.stringNumber |
+| boolean | boolean |prop.boolean |
+| stringBool | boolean &Iota; string | prop.stringBool |
+| numberBool | boolean &Iota; number | prop.numberBool |
+| symbol | symbol |prop.symbol |
+| date | date |prop.date |
+| vNode | vue.VNode &Iota; string &Iota; null |prop.vNode |
+| css | vue.StyleValue |prop.css |
+| object | Record<string, unknown> |prop.object<{name?:string,age?:number}>() |
+| array | Record<string, unknown>[] |prop.array<{name:string}>() |
 | func | ()=>void | prop.func<(value?:number)=>boolean>()  _recommended to use emit_  |
-| emit | ()=>void | prop.func<(value:string)=>void>() |
+| emit | ()=>void | prop.emit<(value:string)=>void>() |
 
 #### Custom Type
 ##### _prop.ts_
@@ -108,7 +108,7 @@ export default class DefineProp {
 import prop from './prop';
 
 const props = {
-  name: prop.stringObject<{ name?: string; lowerCase?: boolean }>().type,
-  type: prop.stringBoolean.required,
+  name: prop.stringObject<{ name?: string; lowerCase?: boolean }>(),
+  type: prop.stringBoolean.isRequired,
 };
 ```
