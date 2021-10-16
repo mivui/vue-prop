@@ -14,6 +14,11 @@ export default {
     {
       file: 'dist/index.cjs.js',
       format: 'cjs',
+      plugins: [
+        getBabelOutputPlugin({
+          configFile: path.resolve(__dirname, 'babel.config.js'),
+        }),
+      ],
     },
     {
       file: 'dist/index.esm.js',
@@ -22,9 +27,6 @@ export default {
   ],
   plugins: [
     commonjs(),
-    getBabelOutputPlugin({
-      configFile: path.resolve(__dirname, 'babel.config.js'),
-    }),
     resolve({
       extensions,
       modulesOnly: true,

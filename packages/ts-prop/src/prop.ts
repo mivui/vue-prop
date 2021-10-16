@@ -4,13 +4,13 @@ export type Data = Record<string, unknown>;
 
 export type DefaultFactory<T> = (props: Data) => T | null | undefined;
 
+export type RequiredProp<T, D> = Prop<T, D> & { required: true };
+
 export type PropOptions<T, D> = Prop<T, D> & {
   def(value?: D): PropOptions<T, D>;
   valid(validator: (value: D) => boolean): PropOptions<T, D>;
   get isRequired(): RequiredProp<T, D>;
 };
-
-export type RequiredProp<T, D> = Prop<T, D> & { required: true };
 
 export class VueProp<T = any, D = T> {
   type?: PropType<T> | true | null;
