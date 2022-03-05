@@ -1,5 +1,5 @@
 import { Prop, StyleValue, VNode } from 'vue';
-import { RequiredProp, PropOptions, useProp } from './prop';
+import { useProp, LiteralPropOptions } from './prop';
 
 export { PropFactory, useProp } from './prop';
 export type {
@@ -8,6 +8,7 @@ export type {
   DefaultType,
   RequiredProp,
   PropOptions,
+  LiteralPropOptions,
 } from './prop';
 
 export class DefineProp {
@@ -15,14 +16,12 @@ export class DefineProp {
     return useProp<string>(String);
   }
 
-  static literalType<T extends string>(type: PropOptions<string, string>) {
-    return type as unknown as Prop<T>;
-  }
-
-  static requiredLiteralType<T extends string>(
-    type: RequiredProp<string, string>,
-  ) {
-    return type as unknown as Prop<T> & { required: true };
+  static literalType<T>() {
+    return useProp<string | number | boolean, T>([
+      String,
+      Boolean,
+      Number,
+    ]) as LiteralPropOptions<T>;
   }
 
   static get number() {

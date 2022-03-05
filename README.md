@@ -68,62 +68,41 @@ const props = {
 
 #### api
 
-| property | default type |                                 example                                 |
-|:---------:|:---------:|:-----------------------------------------------------------------------:|
-| string | string|                               prop.string                               |
-| number |number|                            prop.number.def(7)                           |
-| stringNumber | string &Iota; number|                            prop.stringNumber                            |
-| boolean | boolean |                               prop.boolean                              |
-| stringBool | boolean &Iota; string |                             prop.stringBool                             |
-| numberBool | boolean &Iota; number |                             prop.numberBool                             |
-| symbol | symbol |                               prop.symbol                               |
-| date | date |                                prop.date                                |
-| vNode | vue.VNode &Iota; string &Iota; null |                                prop.vNode                               |
-| css | vue.StyleValue |                                 prop.css                                |
-| object | Record<string, unknown> |                prop.object<{name?:string,age?:number}>()                |
-| array | Record<string, unknown>[] |                       prop.array<{name:string}>()                       |
-| func | ()=>void |     prop.func<(value?:number)=>boolean>()  _recommended to use emit_    |
+| property |            default type             |                                 example                              |
+|:---------:|:-----------------------------------:|:--------------------------------------------------------------------:|
+| string |               string                |                               prop.string                            |
+| number |               number                |                            prop.number.def(7)                        |
+| stringNumber |        string &Iota; number         |                            prop.stringNumber                         |
+| boolean |               boolean               |                               prop.boolean                           |
+| stringBool |        boolean &Iota; string        |                             prop.stringBool                          |
+| numberBool |        boolean &Iota; number        |                             prop.numberBool                          |
+| symbol |               symbol                |                               prop.symbol                            |
+| date |                date                 |                                prop.date                             |
+| vNode | vue.VNode &Iota; string &Iota; null |                                prop.vNode                            |
+| css |           vue.StyleValue            |                                 prop.css                             |
+| object |       Record<string, unknown>       |                prop.object<{name?:string,age?:number}>()             |
+| array |      Record<string, unknown>[]      |                       prop.array<{name:string}>()                    |
+| func |              ()=>void               |     prop.func<(value?:number)=>boolean>()  _recommended to use emit_ |
+| literalType |        string,boolean,number        | Template Literal Types Api   |
 
-  #### Template Literal Types Api
-  
-   ###### literalType
-   ```tsx
-   import { defineComponent, toRefs } from 'vue';
-   import prop from 'ts-prop';
-   
-   type Button = 'text' | 'number';
-   export default defineComponent({
-     name: 'LiteralType',
-     props: {
-       type: prop.literalType<Button>(
-         prop.string.def('text'),
-       ),
-     },
-     setup(props) {
-       const { type } = toRefs(props);
-       return () => <button type={type.value}>TEST</button>;
-     },
-   });
-   ```
-   ###### requiredLiteralType
-   ```tsx
-   import { defineComponent, toRefs } from 'vue';
-   import prop from 'ts-prop';
-   
-   type Button = 'text' | 'number';
-   export default defineComponent({
-     name: 'LiteralType',
-     props: {
-       type: prop.requiredLiteralType<Button>(
-         prop.string.def('text').isRequired,
-       ),
-     },
-     setup(props) {
-       const { type } = toRefs(props);
-       return () => <button type={type.value}>TEST</button>;
-     },
-   });
-   ```
+#### Template Literal Types Api
+
+```tsx
+import { defineComponent, toRefs } from 'vue';
+import prop from 'ts-prop';
+
+type Button = 'ok' | 'cancel' | 0 | true;
+export default defineComponent({
+  name: 'LiteralType',
+  props: {
+    name: prop.literalType<Button>().def('ok'),
+  },
+  setup(props) {
+    const { name } = toRefs(props);
+    return () => <button>{name.value}</button>;
+  },
+});
+```
 
 #### Custom Type
 

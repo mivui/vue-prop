@@ -1,10 +1,10 @@
 import prop from '..';
 
-type Button = 'primary' | 'info';
-
 test('literalType', () => {
-  expect(prop.literalType<Button>(prop.string.def('primary'))).toEqual({
-    type: String,
+  expect(
+    prop.literalType<'primary' | 'info' | 0 | true>().def('primary'),
+  ).toEqual({
+    type: [String, Boolean, Number],
     default: 'primary',
   });
 });

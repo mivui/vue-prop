@@ -1,17 +1,14 @@
 import { defineComponent, toRefs } from 'vue';
 import prop from '../index';
 
-type Button = 'primary' | 'info';
+type Button = 'ok' | 'cancel' | 0 | true;
 export default defineComponent({
   name: 'LiteralType',
   props: {
-    name: prop.requiredLiteralType<Button>(
-      prop.string.def('primary').isRequired,
-    ),
+    name: prop.literalType<Button>().def('ok'),
   },
   setup(props) {
     const { name } = toRefs(props);
-    console.log(name.value);
-    return () => <button style="color:red">{name.value}</button>;
+    return () => <button>{name.value}</button>;
   },
 });
