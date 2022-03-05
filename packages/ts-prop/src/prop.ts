@@ -1,8 +1,12 @@
 import { Prop, PropType } from 'vue';
 
-export type Data = Record<string, unknown>;
+export type VuePropType<T> = PropType<T> | true | null;
 
-export type DefaultFactory<T> = (props: Data) => T | null | undefined;
+export type DefaultFactory<T> = (
+  props: Record<string, unknown> | T,
+) => T | null | undefined;
+
+export type DefaultType<T> = T | DefaultFactory<T> | null | undefined | object;
 
 export type RequiredProp<T, D> = Prop<T, D> & { required: true };
 
@@ -12,16 +16,16 @@ export type PropOptions<T, D> = Prop<T, D> & {
   get isRequired(): RequiredProp<T, D>;
 };
 
-export class VueProp<T = any, D = T> {
-  type?: PropType<T> | true | null;
+export class PropFactory<T = any, D = T> {
+  type?: VuePropType<T>;
 
   required?: boolean;
 
-  default?: D | DefaultFactory<D> | null | undefined | object;
+  default?: DefaultType<D>;
 
   validator?(value: D): boolean;
 
-  constructor(type: PropType<T> | true | null) {
+  constructor(type: VuePropType<T>) {
     this.type = type;
   }
 
@@ -41,8 +45,6 @@ export class VueProp<T = any, D = T> {
   }
 }
 
-export function useProp<T = any, D = T>(
-  type: PropType<T> | true | null,
-): PropOptions<T, D> {
-  return new VueProp<T, D>(type);
+export function useProp<T, D = T>(type: VuePropType<T>): PropOptions<T, D> {
+  return new PropFactory<T, D>(type);
 }

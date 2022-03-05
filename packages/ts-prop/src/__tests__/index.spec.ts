@@ -1,5 +1,14 @@
 import prop from '..';
 
+type Button = 'primary' | 'info';
+
+test('literalType', () => {
+  expect(prop.literalType<Button>(prop.string.def('primary'))).toEqual({
+    type: String,
+    default: 'primary',
+  });
+});
+
 test('func', () => {
   expect(prop.func<() => void>()).toEqual({ type: Function });
 });

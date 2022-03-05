@@ -1,12 +1,28 @@
-import { PropType, StyleValue, VNode } from 'vue';
-import { useProp } from './prop';
+import { Prop, StyleValue, VNode } from 'vue';
+import { RequiredProp, PropOptions, useProp } from './prop';
 
-export { VueProp, useProp } from './prop';
-export type { Data, DefaultFactory, PropOptions, RequiredProp } from './prop';
+export { PropFactory, useProp } from './prop';
+export type {
+  VuePropType,
+  DefaultFactory,
+  DefaultType,
+  RequiredProp,
+  PropOptions,
+} from './prop';
 
 export class DefineProp {
   static get string() {
     return useProp<string>(String);
+  }
+
+  static literalType<T extends string>(type: PropOptions<string, string>) {
+    return type as unknown as Prop<T>;
+  }
+
+  static requiredLiteralType<T extends string>(
+    type: RequiredProp<string, string>,
+  ) {
+    return type as unknown as Prop<T> & { required: true };
   }
 
   static get number() {
@@ -26,7 +42,7 @@ export class DefineProp {
   }
 
   static get numberBool() {
-    return useProp<string | boolean>([String, Boolean]);
+    return useProp<number | boolean>([Number, Boolean]);
   }
 
   static get symbol() {
@@ -54,7 +70,7 @@ export class DefineProp {
   }
 
   static func<T = () => void>() {
-    return { type: Function as PropType<T> };
+    return { type: Function as Prop<T> };
   }
 
   static emit<T = () => void>() {
