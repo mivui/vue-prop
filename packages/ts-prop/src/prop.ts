@@ -23,7 +23,7 @@ export type LiteralPropOptions<T> = Prop<T, T> & {
 };
 
 export class PropFactory<T = any, D = T> {
-  type: VuePropType<T>;
+  type?: VuePropType<T>;
 
   required?: boolean;
 

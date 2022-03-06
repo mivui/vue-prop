@@ -4,6 +4,6 @@ import LiteralType from './LiteralType';
 export default defineComponent({
   name: 'Test',
   setup() {
-    return () => <LiteralType name={'ok'} />;
+    return () => <LiteralType name="ok" />;
   },
 });
