@@ -68,22 +68,22 @@ const props = {
 
 #### api
 
-| property |               default type               |                                 example                              |
-|:---------:|:----------------------------------------:|:--------------------------------------------------------------------:|
-| string |                  string                  |                               prop.string                            |
-| number |                  number                  |                            prop.number.def(7)                        |
-| stringNumber |           string &Iota; number           |                            prop.stringNumber                         |
-| boolean |                 boolean                  |                               prop.boolean                           |
-| stringBool |          string  &Iota; boolean          |                             prop.stringBool                          |
-| numberBool |              number &Iota; boolean              |                             prop.numberBool                          |
-| symbol |                  symbol                  |                               prop.symbol                            |
-| date |                   date                   |                                prop.date                             |
-| vNode |   vue.VNode &Iota; string &Iota; null    |                                prop.vNode                            |
-| css |              vue.StyleValue              |                                 prop.css                             |
-| object |         Record<string, unknown>          |                prop.object<{name?:string,age?:number}>()             |
-| array |        Record<string, unknown>[]         |                       prop.array<{name:string}>()                    |
-| func |                 ()=>void                 |     prop.func<(value?:number)=>boolean>()  _recommended to use emit_ |
-| literalType |   string &Iota; boolean &Iota; number    | Template Literal Types Api   |
+| property |                 default type                  |                                 example                              |
+|:---------:|:---------------------------------------------:|:--------------------------------------------------------------------:|
+| string |                    string                     |                               prop.string                            |
+| number |                    number                     |                            prop.number.def(7)                        |
+| stringNumber |             string &Iota; number              |                            prop.stringNumber                         |
+| boolean |                    boolean                    |                               prop.boolean                           |
+| stringBool |            string  &Iota; boolean             |                             prop.stringBool                          |
+| numberBool |             number &Iota; boolean             |                             prop.numberBool                          |
+| symbol |                    symbol                     |                               prop.symbol                            |
+| date |                     date                      |                                prop.date                             |
+| vNode |      vue.VNode &Iota; string &Iota; null      |                                prop.vNode                            |
+| css |                vue.StyleValue                 |                                 prop.css                             |
+| object |            Record<string, unknown>            |                prop.object<{name?:string,age?:number}>()             |
+| array |           Record<string, unknown>[]           |                       prop.array<{name:string}>()                    |
+| func |                   ()=>void                    |     prop.func<(value?:number)=>boolean>()  _recommended to use emit_ |
+| literalType |     string &Iota; boolean &Iota; number       | Template Literal Types Api   |
 
 #### Template Literal Types Api
 
