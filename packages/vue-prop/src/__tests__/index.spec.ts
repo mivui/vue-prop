@@ -1,4 +1,4 @@
-import prop from '..';
+import { prop } from '..';
 
 test('literalType', () => {
   expect(

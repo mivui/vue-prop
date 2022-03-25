@@ -1,7 +1,7 @@
 {
-  "name": "ts-prop",
-  "version": "3.0.3",
-  "description": "Prop type definition of Vue3. only recommended for typescript.",
+  "name": "vue-prop",
+  "version": "3.0.1",
+  "description": "Prop type definition of Vue3.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
@@ -19,31 +19,31 @@
     "vue": "^3.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.11",
-    "@microsoft/api-extractor": "^7.19.4",
+    "@microsoft/api-extractor": "^7.19.5",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-replace": "^4.0.0",
     "@types/jest": "^27.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
-    "eslint": "^8.10.0",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint": "^8.11.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-jest": "^26.1.3",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.5.1",
-    "prettier": "^2.5.1",
-    "rollup": "^2.70.0",
+    "prettier": "^2.6.1",
+    "rollup": "^2.70.1",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
-    "ts-jest": "^27.1.3",
+    "ts-jest": "^27.1.4",
     "tslib": "^2.3.1",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.3"
   },
   "author": "uinio",
   "license": "MIT",
@@ -54,10 +54,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uinio/ts-prop.git"
+    "url": "git+https://github.com/uinio/vue-prop.git"
   },
   "bugs": {
-    "url": "https://github.com/uinio/ts-prop/issues"
+    "url": "https://github.com/uinio/vue-prop/issues"
   },
-  "homepage": "https://github.com/uinio/ts-prop#readme"
+  "homepage": "https://github.com/uinio/vue-prop#readme"
 }

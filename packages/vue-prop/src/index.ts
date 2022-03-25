@@ -77,4 +77,5 @@ export class DefineProp {
   }
 }
 
+export { DefineProp as prop };
 export default DefineProp;

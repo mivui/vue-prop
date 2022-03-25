@@ -1,13 +1,13 @@
-# ts-prop
+# vue-prop
 
-> Prop type definition of Vue3. only recommended for vue typescript.
+> Prop type definition of Vue3.
 
 #### install
 
 ```shell
-npm install ts-prop
+npm install vue-prop
 
-yarn add ts-prop
+yarn add vue-prop
 ```
 
 #### example
@@ -20,7 +20,7 @@ yarn add ts-prop
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import prop from 'ts-prop';
+import { prop } from 'vue-prop';
 
 export const drawerProps = {
   visible: prop.boolean.def(false).isRequired,
@@ -44,7 +44,7 @@ export default defineComponent({
 ```
 
 ```ts
-import prop from 'ts-prop';
+import { prop } from 'vue-prop';
 
 interface Person {
   name: string;
@@ -74,7 +74,7 @@ const props = {
 | number |                    number                     |                            prop.number.def(7)                        |
 | stringNumber |             string &Iota; number              |                            prop.stringNumber                         |
 | boolean |                    boolean                    |                               prop.boolean                           |
-| stringBool |            string  &Iota; boolean             |                             prop.stringBool                          |
+| stringBool |            string &Iota; boolean             |                             prop.stringBool                          |
 | numberBool |             number &Iota; boolean             |                             prop.numberBool                          |
 | symbol |                    symbol                     |                               prop.symbol                            |
 | date |                     date                      |                                prop.date                             |
@@ -82,14 +82,15 @@ const props = {
 | css |                vue.StyleValue                 |                                 prop.css                             |
 | object |            Record<string, unknown>            |                prop.object<{name?:string,age?:number}>()             |
 | array |           Record<string, unknown>[]           |                       prop.array<{name:string}>()                    |
-| func |                   ()=>void                    |     prop.func<(value?:number)=>boolean>()  _recommended to use emit_ |
+| func |                   ()=>void                    |     prop.func<(value?:number)=>boolean>()  _recommended to use
+emit_ |
 | literalType |     string &Iota; boolean &Iota; number       | Template Literal Types Api   |
 
 #### Template Literal Types Api
 
 ```tsx
 import { defineComponent, toRefs } from 'vue';
-import prop from 'ts-prop';
+import { prop } from 'vue-prop';
 
 type Button = 'ok' | 'cancel' | 0 | true;
 export default defineComponent({
@@ -109,7 +110,7 @@ export default defineComponent({
 ##### _prop.ts_
 
 ```ts
-import { useProp } from 'ts-prop';
+import { useProp } from 'vue-prop';
 
 export default class DefineProp {
   static stringObject<T = Record<string, unknown>>() {

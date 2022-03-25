@@ -9,7 +9,7 @@ import path from 'path';
 const extensions = ['.js', '.ts'];
 
 export default {
-  input: ['./packages/ts-prop/src/index.ts'],
+  input: ['./packages/vue-prop/src/index.ts'],
   output: [
     {
       file: 'dist/index.cjs.js',

@@ -25,11 +25,11 @@
     ],
     "rootDir": ".",
     "paths": {
-      "@ts-prop/*": [
+      "@vue-prop/*": [
         "packages/*/src"
       ],
-      "ts-prop": [
-        "packages/ts-prop/src"
+      "vue-prop": [
+        "packages/vue-prop/src"
       ]
     },
     "declaration": true,
