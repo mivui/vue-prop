@@ -1,6 +1,6 @@
 {
   "name": "vue-prop",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Prop type definition of Vue3.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",

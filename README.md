@@ -21,6 +21,8 @@ yarn add vue-prop
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { prop } from 'vue-prop';
+//or
+import prop from 'vue-prop';
 
 export const drawerProps = {
   visible: prop.boolean.def(false).isRequired,
@@ -45,6 +47,8 @@ export default defineComponent({
 
 ```ts
 import { prop } from 'vue-prop';
+//or
+import prop from 'vue-prop';
 
 interface Person {
   name: string;
@@ -68,29 +72,31 @@ const props = {
 
 #### api
 
-| property |                 default type                  |                                 example                              |
-|:---------:|:---------------------------------------------:|:--------------------------------------------------------------------:|
-| string |                    string                     |                               prop.string                            |
-| number |                    number                     |                            prop.number.def(7)                        |
-| stringNumber |             string &Iota; number              |                            prop.stringNumber                         |
-| boolean |                    boolean                    |                               prop.boolean                           |
-| stringBool |            string &Iota; boolean             |                             prop.stringBool                          |
-| numberBool |             number &Iota; boolean             |                             prop.numberBool                          |
-| symbol |                    symbol                     |                               prop.symbol                            |
-| date |                     date                      |                                prop.date                             |
-| vNode |      vue.VNode &Iota; string &Iota; null      |                                prop.vNode                            |
-| css |                vue.StyleValue                 |                                 prop.css                             |
-| object |            Record<string, unknown>            |                prop.object<{name?:string,age?:number}>()             |
-| array |           Record<string, unknown>[]           |                       prop.array<{name:string}>()                    |
-| func |                   ()=>void                    |     prop.func<(value?:number)=>boolean>()  _recommended to use
-emit_ |
-| literalType |     string &Iota; boolean &Iota; number       | Template Literal Types Api   |
+|   property   |            default type             |                          example                          |
+|:------------:|:-----------------------------------:|:---------------------------------------------------------:|
+|    string    |               string                |                        prop.string                        |
+|    number    |               number                |                    prop.number.def(7)                     |
+| stringNumber |        string &Iota; number         |                     prop.stringNumber                     |
+|   boolean    |               boolean               |                       prop.boolean                        |
+|  stringBool  |        string &Iota; boolean        |                      prop.stringBool                      |
+|  numberBool  |        number &Iota; boolean        |                      prop.numberBool                      |
+|    symbol    |               symbol                |                        prop.symbol                        |
+|     date     |                date                 |                         prop.date                         |
+|    vNode     | vue.VNode &Iota; string &Iota; null |                        prop.vNode                         |
+|     css      |           vue.StyleValue            |                         prop.css                          |
+|    object    |       Record<string, unknown>       |         prop.object<{name?:string,age?:number}>()         |
+|    array     |      Record<string, unknown>[]      |                prop.array<{name:string}>()                |
+|     func     |              ()=>void               |          prop.func<(value?:number)=>boolean>()            |
+|     emit     |              ()=>void               |                   prop.emit<()=>void>()                   |
+| literalType  | string &Iota; boolean &Iota; number |                  Template Literal Types                   |
 
-#### Template Literal Types Api
+#### Template Literal Types
 
 ```tsx
 import { defineComponent, toRefs } from 'vue';
 import { prop } from 'vue-prop';
+//or
+import prop from 'vue-prop';
 
 type Button = 'ok' | 'cancel' | 0 | true;
 export default defineComponent({
