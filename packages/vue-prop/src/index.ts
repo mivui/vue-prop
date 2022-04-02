@@ -73,7 +73,7 @@ export class DefineProp {
   }
 
   static emit<T = () => void>() {
-    return Function as unknown as T;
+    return undefined as unknown as T;
   }
 }
 
