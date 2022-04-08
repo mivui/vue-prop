@@ -4,9 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/vue-prop.svg)](https://badge.fury.io/js/vue-prop)
 ![Alt](https://img.shields.io/npm/dm/vue-prop)
-![Alt](https://img.shields.io/github/issues/uinio/vue-prop)
-![Alt](https://img.shields.io/github/forks/uinio/vue-prop)
-![Alt](https://img.shields.io/github/stars/uinio/vue-prop)
+![Alt](https://img.shields.io/github/license/uinio/vue-prop)
 
 #### install
 
@@ -28,7 +26,7 @@ yarn add vue-prop
 import { defineComponent } from 'vue';
 import { prop } from 'vue-prop';
 //or
-import prop from 'vue-prop';
+// import prop from 'vue-prop';
 
 export const drawerProps = {
   visible: prop.boolean.def(false).isRequired,
@@ -53,8 +51,6 @@ export default defineComponent({
 
 ```ts
 import { prop } from 'vue-prop';
-//or
-import prop from 'vue-prop';
 
 interface Person {
   name: string;
@@ -101,8 +97,6 @@ const props = {
 ```tsx
 import { defineComponent, toRefs } from 'vue';
 import { prop } from 'vue-prop';
-//or
-import prop from 'vue-prop';
 
 type Button = 'ok' | 'cancel' | 0 | true;
 export default defineComponent({
