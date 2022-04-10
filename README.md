@@ -23,8 +23,6 @@ npm install vue-prop
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { prop, defineEmit } from 'vue-prop';
-//or
-// import prop from 'vue-prop';
 
 export const drawerProps = {
   visible: prop.boolean.def(false).isRequired,
