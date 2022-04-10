@@ -51,6 +51,18 @@ export class PropFactory<T = any, D = T> {
   }
 }
 
-export function useProp<T, D = T>(type: VuePropType<T>): PropOptions<T, D> {
+export function defineProp<T, D = T>(type: VuePropType<T>): PropOptions<T, D> {
   return new PropFactory<T, D>(type);
+}
+
+export function literalType<T>() {
+  return defineProp<string | number | boolean, T>([
+    String,
+    Boolean,
+    Number,
+  ]) as LiteralPropOptions<T>;
+}
+
+export function defineEmit<T = () => void>() {
+  return undefined as unknown as T;
 }

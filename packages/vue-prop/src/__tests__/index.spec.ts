@@ -1,20 +1,18 @@
-import { prop } from '..';
+import { prop, literalType, defineEmit } from '..';
 
 test('literalType', () => {
-  expect(
-    prop.literalType<'primary' | 'info' | 0 | true>().def('primary'),
-  ).toEqual({
+  expect(literalType<'primary' | 'info' | 0 | true>().def('primary')).toEqual({
     type: [String, Boolean, Number],
     default: 'primary',
   });
 });
 
 test('func', () => {
-  expect(prop.func<() => void>()).toEqual({ type: Function });
+  expect(prop.function<() => void>()).toEqual({ type: Function });
 });
 
 test('emit', () => {
-  expect({ click: prop.emit<() => void>() }).toEqual({ click: Function });
+  expect({ click: defineEmit<() => void>() }).toEqual({ click: Function });
 });
 
 test('array', () => {

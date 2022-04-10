@@ -10,8 +10,6 @@
 
 ```shell
 npm install vue-prop
-
-yarn add vue-prop
 ```
 
 #### example
@@ -24,7 +22,7 @@ yarn add vue-prop
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { prop } from 'vue-prop';
+import { prop, defineEmit } from 'vue-prop';
 //or
 // import prop from 'vue-prop';
 
@@ -34,7 +32,7 @@ export const drawerProps = {
 };
 
 export const drawerEmits = {
-  open: prop.emit<(value: boolean) => void>(),
+  open: defineEmit<(value: boolean) => void>(),
 };
 
 export default defineComponent({
@@ -74,35 +72,31 @@ const props = {
 
 #### api
 
-|   property   |            default type             |                          example                          |
-|:------------:|:-----------------------------------:|:---------------------------------------------------------:|
-|    string    |               string                |                        prop.string                        |
-|    number    |               number                |                    prop.number.def(7)                     |
-| stringNumber |        string &Iota; number         |                     prop.stringNumber                     |
-|   boolean    |               boolean               |                       prop.boolean                        |
-|  stringBool  |        string &Iota; boolean        |                      prop.stringBool                      |
-|  numberBool  |        number &Iota; boolean        |                      prop.numberBool                      |
-|    symbol    |               symbol                |                        prop.symbol                        |
-|     date     |                date                 |                         prop.date                         |
-|    vNode     | vue.VNode &Iota; string &Iota; null |                        prop.vNode                         |
-|     css      |           vue.StyleValue            |                         prop.css                          |
-|    object    |       Record<string, unknown>       |         prop.object<{name?:string,age?:number}>()         |
-|    array     |      Record<string, unknown>[]      |                prop.array<{name:string}>()                |
-|     func     |              ()=>void               |          prop.func<(value?:number)=>boolean>()            |
-|     emit     |              ()=>void               |                   prop.emit<()=>void>()                   |
-| literalType  | string &Iota; boolean &Iota; number |                  Template Literal Types                   |
+|   property   |            default type             |                  example                  |
+|:------------:|:-----------------------------------:|:-----------------------------------------:|
+|    string    |               string                |                prop.string                |
+|    number    |               number                |            prop.number.def(7)             |
+| stringNumber |        string &Iota; number         |             prop.stringNumber             |
+|   boolean    |               boolean               |               prop.boolean                |
+|    symbol    |               symbol                |                prop.symbol                |
+|     date     |                date                 |                 prop.date                 |
+|    vNode     | vue.VNode &Iota; string &Iota; null |                prop.vNode                 |
+|     css      |           vue.StyleValue            |                 prop.css                  |
+|    object    |         Record<string, any>         | prop.object<{name?:string,age?:number}>() |
+|    array     |        Record<string, any>[]        |        prop.array<{name:string}>()        |
+|   function   |              ()=>void               | prop.function<(value?:number)=>boolean>() |
 
-#### Template Literal Types
+#### Template Literal Type
 
 ```tsx
 import { defineComponent, toRefs } from 'vue';
-import { prop } from 'vue-prop';
+import { literalType } from 'vue-prop';
 
 type Button = 'ok' | 'cancel' | 0 | true;
 export default defineComponent({
   name: 'LiteralType',
   props: {
-    name: prop.literalType<Button>().def('ok'),
+    name: literalType<Button>().def('ok'),
   },
   setup(props) {
     const { name } = toRefs(props);
@@ -111,31 +105,29 @@ export default defineComponent({
 });
 ```
 
-#### Custom Type
-
-##### _prop.ts_
+#### Emit Type
 
 ```ts
-import { useProp } from 'vue-prop';
+import { defineComponent } from 'vue';
+import { defineEmit } from 'vue-prop';
 
-export default class DefineProp {
-  static stringObject<T = Record<string, unknown>>() {
-    return useProp<string | T>([String, Object]);
+type Button = 'ok' | 'cancel' | 0 | true;
+export default defineComponent({
+  name: 'EmitType',
+  emits: { click: defineEmit<(value: boolean) => void>() },
+  setup(props, { emit }) {
+    emit('click', true);
   }
-
-  static get stringBoolean() {
-    return useProp<string | boolean>([String, Boolean]);
-  }
-}
-
-
+});
 ```
 
+#### Custom Type
+
 ```ts
-import prop from './prop';
+import { defineProp } from './prop';
 
 const props = {
-  name: prop.stringObject<{ name?: string; lowerCase?: boolean }>(),
-  type: prop.stringBoolean.isRequired,
+  title: defineProp<string | boolean>([String, Boolean]),
+  user: defineProp<string | { name?: string, age?: number }>([String, Object]),
 };
 ```
