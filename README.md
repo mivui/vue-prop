@@ -109,7 +109,6 @@ export default defineComponent({
 import { defineComponent } from 'vue';
 import { defineEmit } from 'vue-prop';
 
-type Button = 'ok' | 'cancel' | 0 | true;
 export default defineComponent({
   name: 'EmitType',
   emits: { click: defineEmit<(value: boolean) => void>() },
@@ -122,7 +121,7 @@ export default defineComponent({
 #### Custom Type
 
 ```ts
-import { defineProp } from './prop';
+import { defineProp } from 'vue-prop';
 
 const props = {
   title: defineProp<string | boolean>([String, Boolean]),
