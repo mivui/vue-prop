@@ -10,10 +10,10 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "eslint --fix packages/**/*.ts dist/**/*.d.ts",
+    "lint": "eslint --fix",
     "rollup": "rollup -c rollup.config.js",
     "api": "api-extractor run",
-    "build": "npm run rollup && npm run api && npm run lint "
+    "build": "pnpm run rollup && pnpm run api && pnpm run lint "
   },
   "dependencies": {
     "vue": "^3.2.0"
