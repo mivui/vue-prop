@@ -64,5 +64,5 @@ export function literalType<T>() {
 }
 
 export function defineEmit<T = () => void>() {
-  return undefined as unknown as T;
+  return null as unknown as T;
 }

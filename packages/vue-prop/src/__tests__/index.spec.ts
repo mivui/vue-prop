@@ -12,7 +12,7 @@ test('func', () => {
 });
 
 test('emit', () => {
-  expect({ click: defineEmit<() => void>() }).toEqual({ click: Function });
+  expect({ click: defineEmit<() => void>() }).toEqual({ click: null });
 });
 
 test('array', () => {
