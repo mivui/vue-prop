@@ -2,9 +2,7 @@ import { Prop, PropType } from 'vue';
 
 export type VuePropType<T> = PropType<T> | true | null;
 
-export type DefaultFactory<T> = (
-  props: Record<string, unknown> | T,
-) => T | null | undefined;
+export type DefaultFactory<T> = (props: Record<string, unknown> | T) => T | null | undefined;
 
 export type DefaultType<T> = T | DefaultFactory<T> | null | undefined | object;
 
