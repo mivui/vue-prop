@@ -2,11 +2,9 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    'jest/globals': true,
   },
   extends: [
     'airbnb-base',
-    'plugin:jest/recommended',
     'plugin:import/recommended',
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
@@ -16,7 +14,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'prettier', 'import', 'jest'],
+  plugins: ['@typescript-eslint', 'prettier', 'import'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

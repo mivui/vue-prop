@@ -1,6 +1,6 @@
 import { Prop, PropType } from 'vue';
 
-export type VuePropType<T> = PropType<T> | true | null;
+export type TypeProp<T> = PropType<T> | true | null;
 
 export type DefaultFactory<T> = (props: Record<string, unknown> | T) => T | null | undefined;
 
@@ -14,14 +14,8 @@ export type PropOptions<T, D> = Prop<T, D> & {
   get isRequired(): RequiredProp<T, D>;
 };
 
-export type LiteralPropOptions<T> = Prop<T, T> & {
-  def(value: T): LiteralPropOptions<T>;
-  valid(validator: (value: T) => boolean): LiteralPropOptions<T>;
-  get isRequired(): RequiredProp<T, T>;
-};
-
 export class PropFactory<T = any, D = T> {
-  type?: VuePropType<T>;
+  type?: TypeProp<T>;
 
   required?: boolean;
 
@@ -29,7 +23,7 @@ export class PropFactory<T = any, D = T> {
 
   validator?(value: D): boolean;
 
-  constructor(type: VuePropType<T>) {
+  constructor(type: TypeProp<T>) {
     this.type = type;
   }
 
@@ -49,18 +43,10 @@ export class PropFactory<T = any, D = T> {
   }
 }
 
-export function defineProp<T, D = T>(type: VuePropType<T>): PropOptions<T, D> {
-  return new PropFactory<T, D>(type);
+export function propType<T, D = T>(type: TypeProp<T>) {
+  return new PropFactory<T, D>(type) as PropOptions<D, D>;
 }
 
-export function literalType<T>() {
-  return defineProp<string | number | boolean, T>([
-    String,
-    Boolean,
-    Number,
-  ]) as LiteralPropOptions<T>;
-}
-
-export function defineEmit<T = () => void>() {
+export function emitType<T = () => void>() {
   return null as unknown as T;
 }

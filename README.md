@@ -1,9 +1,9 @@
 # vue-prop
 
-> Prop type definition of Vue3.
+> Prop type define of Vue3.
 
-[![npm version](https://badge.fury.io/js/vue-prop.svg)](https://badge.fury.io/js/vue-prop)
-![Alt](https://img.shields.io/npm/dm/vue-prop)
+[![npm version](https://img.shields.io/npm/v/vue-prop.svg)](https://www.npmjs.com/package/vue-prop)
+[![Alt](https://img.shields.io/npm/dm/vue-prop)](https://npmcharts.com/compare/vue-prop?minimal=true)
 ![Alt](https://img.shields.io/github/license/uinio/vue-prop)
 
 #### install
@@ -16,13 +16,8 @@ npm install vue-prop
 
 ```vue
 
-<template>
-  <div></div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-import { prop, defineEmit } from 'vue-prop';
+<script setup lang="ts">
+import { prop, emitType } from "vue-prop";
 
 export const drawerProps = {
   visible: prop.boolean.def(false).isRequired,
@@ -30,7 +25,28 @@ export const drawerProps = {
 };
 
 export const drawerEmits = {
-  open: defineEmit<(value: boolean) => void>(),
+  open: emitType<(value: boolean) => void>()
+};
+
+const props = defineProps(drawerProps);
+
+const emit = defineEmits(drawerEmits);
+</script>
+```
+
+```vue
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { prop, emitType } from 'vue-prop';
+
+export const drawerProps = {
+  visible: prop.boolean.def(false).isRequired,
+  title: prop.string
+};
+
+export const drawerEmits = {
+  open: emitType<(value: boolean) => void>(),
 };
 
 export default defineComponent({
@@ -83,48 +99,45 @@ const props = {
 |    object    |         Record<string, any>         | prop.object<{name?:string,age?:number}>() |
 |    array     |        Record<string, any>[]        |        prop.array<{name:string}>()        |
 |   function   |              ()=>void               | prop.function<(value?:number)=>boolean>() |
+|   literal    |              undefined              |    prop.literal<'ok'&Iota;'cancel'>()     |
 
 #### Template Literal Type
 
-```tsx
-import { defineComponent, toRefs } from 'vue';
-import { literalType } from 'vue-prop';
+```vue
 
-type Button = 'ok' | 'cancel' | 0 | true;
-export default defineComponent({
-  name: 'LiteralType',
-  props: {
-    name: literalType<Button>().def('ok'),
-  },
-  setup(props) {
-    const { name } = toRefs(props);
-    return () => <button>{name.value}</button>;
-  },
-});
+<script setup lang="ts">
+import { prop } from "vue-prop";
+
+type Button = "ok" | "cancel" | 0 | true;
+
+const props = defineProps({ button: prop.literal<Button>() });
+
+</script>
 ```
 
 #### Emit Type
 
-```ts
-import { defineComponent } from 'vue';
-import { defineEmit } from 'vue-prop';
+```vue
 
-export default defineComponent({
-  name: 'EmitType',
-  emits: { click: defineEmit<(value: boolean) => void>() },
-  setup(props, { emit }) {
-    emit('click', true);
-  }
-});
+<script setup lang="ts">
+import { emitType } from "vue-prop";
+
+export const drawerEmits = {
+  open: emitType<(value: boolean) => void>()
+};
+
+const emit = defineEmits(drawerEmits);
+</script>
 ```
 
 #### Custom Type
 
 ```ts
-import { defineProp } from 'vue-prop';
+import { propType } from "vue-prop";
 
 const props = {
-  title: defineProp<string | boolean>([String, Boolean]),
-  user: defineProp<string | { name?: string, age?: number }>([String, Object]),
+  title: propType<string | boolean>([String, Boolean]),
+  user: propType<string | { name?: string, age?: number }>([String, Object]),
+  color: propType<string | number, "red" | "blue" | 1 | 2>([String, Number])
 };
 ```

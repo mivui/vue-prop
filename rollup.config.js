@@ -1,15 +1,34 @@
+import { defineConfig } from 'rollup';
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import replace from '@rollup/plugin-replace';
+// import terser from '@rollup/plugin-terser';
 import path from 'path';
 
-const extensions = ['.js', '.ts'];
+const extensions = ['.mjs', '.cjs', '.js', '.ts', '.json', '.node'];
 
-export default {
+export default defineConfig({
   input: ['./packages/index.ts'],
+  plugins: [
+    commonjs(),
+    resolve({
+      extensions,
+      preferBuiltins: false,
+    }),
+    json({
+      namedExports: false,
+    }),
+    typescript({ tsconfig: './tsconfig.json' }),
+    replace({
+      preventAssignment: true,
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      __buildDate__: () => JSON.stringify(new Date()),
+      __buildVersion: 15,
+    }),
+  ],
   output: [
     {
       file: 'dist/index.cjs.js',
@@ -18,35 +37,19 @@ export default {
         getBabelOutputPlugin({
           configFile: path.resolve(__dirname, 'babel.config.js'),
         }),
+        // terser(),
       ],
     },
     {
       file: 'dist/index.esm.js',
-      format: 'esm',
+      format: 'es',
+      plugins: [
+        getBabelOutputPlugin({
+          presets: ['@babel/preset-env'],
+          plugins: [['@babel/plugin-transform-runtime', { useESModules: true }]],
+        }),
+        // terser(),
+      ],
     },
   ],
-  plugins: [
-    commonjs(),
-    resolve({
-      extensions,
-      modulesOnly: true,
-      preferredBuiltins: false,
-    }),
-    json({
-      namedExports: false,
-    }),
-    typescript({
-      tsconfig: 'tsconfig.json',
-      tsconfigOverride: {
-        declaration: true,
-        declarationMap: false,
-      },
-    }),
-    replace({
-      preventAssignment: true,
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      __buildDate__: () => JSON.stringify(new Date()),
-      __buildVersion: 15,
-    }),
-  ],
-};
+});

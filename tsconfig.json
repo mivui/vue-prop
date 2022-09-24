@@ -15,14 +15,24 @@
     "esModuleInterop": true,
     "removeComments": false,
     "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "types": ["jest", "node"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "vitest/globals",
+      "node"
+    ],
     "rootDir": ".",
     "paths": {
-      "vue-prop": ["packages"]
+      "vue-prop": [
+        "packages"
+      ]
     },
     "declaration": true,
     "declarationMap": false
   },
-  "include": ["packages/**/*.ts"]
+  "include": [
+    "packages/**/*.ts"
+  ]
 }
