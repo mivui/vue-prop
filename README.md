@@ -2,8 +2,8 @@
 
 > Prop type definition of Vue3.
 
-[![npm version](https://badge.fury.io/js/vue-prop.svg)](https://badge.fury.io/js/vue-prop)
-![Alt](https://img.shields.io/npm/dm/vue-prop)
+[![npm version](https://img.shields.io/npm/v/vue-prop.svg)](https://www.npmjs.com/package/vue-prop)
+[![Alt](https://img.shields.io/npm/dm/vue-prop)](https://npmcharts.com/compare/vue-prop?minimal=true)
 ![Alt](https://img.shields.io/github/license/uinio/vue-prop)
 
 #### install
