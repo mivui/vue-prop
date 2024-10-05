@@ -1,6 +1,6 @@
 {
   "name": "vue-prop",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "description": "Prop type define of Vue3.",
   "type": "module",
   "main": "dist/index.cjs.js",
@@ -46,10 +46,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mioxs/vue-prop.git"
+    "url": "git+https://github.com/mivui/vue-prop.git"
   },
   "bugs": {
-    "url": "https://github.com/mioxs/vue-prop/issues"
+    "url": "https://github.com/mivui/vue-prop/issues"
   },
-  "homepage": "https://github.com/mioxs/vue-prop#readme"
+  "homepage": "https://github.com/mivui/vue-prop#readme"
 }
