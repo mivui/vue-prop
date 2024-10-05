@@ -1,38 +1,29 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
-    "sourceMap": false,
-    "target": "esnext",
-    "useDefineForClassFields": false,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "allowJs": false,
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    /* Node mode */
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "jsx": "preserve",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "types": [
-      "vitest/globals",
-      "node"
-    ],
-    "rootDir": ".",
-    "paths": {
-      "vue-prop": [
-        "packages"
-      ]
-    },
-    "declaration": true,
-    "declarationMap": false
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    /* Path config */
+    // "outDir": "temp",
+    "sourceMap": false,
+    "baseUrl": ".",
+    "rootDir": "./packages",
+    "types": ["vitest/globals"]
   },
-  "include": [
-    "packages/**/*.ts"
-  ]
+  "include": ["packages/**/*.ts", "packages/**/*.tsx", "vitest.config.ts"],
+  "exclude": ["node_modules", "dist"]
 }

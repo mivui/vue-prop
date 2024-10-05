@@ -1,10 +1,18 @@
-module.exports = {
-  presets: [
+module.exports = function (api) {
+  api.cache(true);
+
+  const presets = [
     [
       '@babel/preset-env',
       {
-        targets: { chrome: '18', firefox: '49' },
+        targets: { chrome: '87' },
       },
     ],
-  ],
+  ];
+  const plugins = [];
+
+  return {
+    presets,
+    plugins,
+  };
 };

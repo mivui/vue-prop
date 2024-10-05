@@ -1,7 +1,8 @@
 import { defineComponent, toRefs } from 'vue';
-import { prop, emitType } from '..';
 
-type Button = 'ok' | 'cancel' | 0 | true;
+import { emitType, prop } from '..';
+
+type Button = 'cancel' | 'ok' | 0 | true;
 
 export default defineComponent({
   name: 'VueType',

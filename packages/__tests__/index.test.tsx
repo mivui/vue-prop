@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+
 import VueType from './VueType';
 
 describe('type', () => {
