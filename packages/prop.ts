@@ -30,7 +30,7 @@ export class PropFactory<T = any, D = T> {
   }
 
   public def(value?: D): ExtractDefault<T, D> {
-    if (typeof value === 'object' || Array.isArray(value)) {
+    if (value instanceof Object || Array.isArray(value)) {
       this.default = () => value;
     } else {
       this.default = value;
